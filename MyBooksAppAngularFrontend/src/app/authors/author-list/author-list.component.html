@@ -1,19 +1,24 @@
-<form class="justify-content-center">
-  <mat-form-field class="example-full-width">
-    <mat-label>Search authors</mat-label>
-    <input #searchAuthorInput (keyup)="authorSearch(searchAuthorInput)" matInput placeholder="Enter author name">
-  </mat-form-field>
-</form>
-<hr class="mb-4" id="author-list-hr">
-<h4 class="justify-content-center" *ngIf="authors && authors.length < 1; else showAuthors">No authors have been loaded.</h4>
-<ng-template #showAuthors>
-  <div class="row mb-3 justify-content-sm-center justify-content-md-start">
-    <app-author-item *ngFor="let authorItem of authors; let i = index"
-                     [authorItem]="authorItem"
-                     [index]="i">
-    </app-author-item>
-  </div>
-</ng-template>
-
-<mat-paginator *ngIf="authors.length > 0 && !searchAuthorInput.value" [length]='numOfAuthors' [pageSize]='pageSize' [pageSizeOptions]='pageSizeOptions' (page)="onChangedPage($event)"></mat-paginator>
-
+<div *ngIf="!isLoading">
+  <form class="justify-content-center">
+    <mat-form-field id="authorSearchForm" class="example-full-width">
+      <mat-label>Search authors</mat-label>
+      <input id="searchAuthorInput" #searchAuthorInput (keyup)="authorSearch(searchAuthorInput)" matInput placeholder="Enter author name">
+    </mat-form-field>
+  </form>
+  <hr class="mb-4" id="author-list-hr">
+  <h4 class="justify-content-center" *ngIf="authors && authors.length < 1; else showAuthors">No authors have been loaded.</h4>
+  <ng-template #showAuthors>
+    <div class="row mb-3 justify-content-sm-center justify-content-md-start">
+      <app-author-item *ngFor="let authorItem of authors; let i = index"
+                       [authorItem]="authorItem"
+                       [index]="i">
+      </app-author-item>
+    </div>
+  </ng-template>
+  <mat-paginator *ngIf="authors.length > 0 && !searchAuthorInput.value"
+                 [length]='numOfAuthors'
+                 [pageSize]='pageSize'
+                 [pageSizeOptions]='pageSizeOptions'
+                 (page)="onChangedPage($event)">
+  </mat-paginator>
+</div>

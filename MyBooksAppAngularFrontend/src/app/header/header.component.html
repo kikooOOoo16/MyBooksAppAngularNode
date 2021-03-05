@@ -8,10 +8,10 @@
   <div #navbarMainListDiv class="main_list">
     <ul class="navLinks">
       <li class="nav-item" [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active">
-        <a class="nav-link ml-2" (click)="toggleDropdown()" routerLink="/">Authors <span class="sr-only">(current)</span></a>
+        <a class="nav-link ml-2" (click)="toggleDropdown()" routerLink="/authors">Authors <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item" [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active">
-        <a class="nav-link" (click)="toggleDropdown()" routerLink="/">Books <span class="sr-only">(current)</span></a>
+        <a class="nav-link" (click)="toggleDropdown()" routerLink="/books">Books <span class="sr-only">(current)</span></a>
       </li>
     </ul>
   </div>

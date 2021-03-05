@@ -1,4 +1,4 @@
-export class BookModel {
+export class Book {
   title: string;
   year: Date;
   series: string;

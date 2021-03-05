@@ -1,11 +1,10 @@
 const express = require('express');
 const Author = require('../models/author');
+const escapeRegex = require('../shared');
 
 const router = express.Router();
 
-const escapeRegex = (text) => {
-    return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
-}
+
 
 router.get('', (req, res) => {
     let resultSet = [];
@@ -28,7 +27,7 @@ router.get('', (req, res) => {
                 numOfBooks: author.books.length
             });
         });
-        return Author.count();
+        return Author.countDocuments();
     }).then(numOfAuthors => {
         res.status(200).json({
             message: 'Authors fetched successfully.',

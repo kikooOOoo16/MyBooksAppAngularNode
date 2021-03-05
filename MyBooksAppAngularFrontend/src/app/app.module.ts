@@ -12,15 +12,14 @@ import * as fromApp from './store/app.reducer';
 import {EffectsModule} from '@ngrx/effects';
 import {AuthorsEffects} from './authors/store/authors.effects';
 import {HttpClientModule} from '@angular/common/http';
-import {BooksComponent} from './books/books.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {BooksEffects} from './books/store/books.effects';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     AppTrackScrollDirective,
-    BooksComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +28,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     NgbModule,
     FontAwesomeModule,
     StoreModule.forRoot(fromApp.appReducer),
-    EffectsModule.forRoot([AuthorsEffects]),
+    EffectsModule.forRoot([AuthorsEffects, BooksEffects]),
     BrowserAnimationsModule
   ],
   providers: [],

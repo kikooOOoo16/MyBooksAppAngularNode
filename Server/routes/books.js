@@ -1,10 +1,19 @@
 const express = require('express');
 const Book = require('../models/book');
+const escapeRegex = require('../shared');
 
 const router = express.Router();
 
 router.get('', (req, res) => {
-    Book.find({}).then(fetchedBooks => {
+    let booksQuery = Book.find();
+    if (req.query.searchBooksByTitleQuery) {
+        const regex = RegExp(escapeRegex(req.query.searchBooksByTitleQuery), 'gi');
+        booksQuery = Book.find({title: regex })
+    } else if (req.query.searchBooksBySeriesQuery) {
+        const regex = RegExp(escapeRegex(req.query.searchBooksBySeriesQuery), 'gi');
+        booksQuery = Book.find({series: regex })
+    }
+    booksQuery.then(fetchedBooks => {
         if (fetchedBooks) {
             res.status(200).json({
                 message: 'Books fetched successfully.',
@@ -15,7 +24,7 @@ router.get('', (req, res) => {
                 message: 'No books matched that query'
             })
         }
-    })
-})
+    });
+});
 
 module.exports = router;

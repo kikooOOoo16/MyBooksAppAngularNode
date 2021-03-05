@@ -1,3 +1,7 @@
+#authorSearchForm {
+  font-size: 1.2rem;
+}
+
 @media (max-width: 575px) {
   #author-list-hr {
     width: 288px;

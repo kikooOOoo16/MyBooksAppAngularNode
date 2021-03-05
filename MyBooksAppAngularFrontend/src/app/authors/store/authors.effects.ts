@@ -5,7 +5,6 @@ import * as AuthorsActions from './authors.actions';
 import {catchError, map, switchMap} from 'rxjs/operators';
 import {Author} from '../models/author.model';
 import {of} from 'rxjs';
-import {error} from '@angular/compiler/src/util';
 
 interface ResDataGetAuthors {
   message: string;
@@ -40,12 +39,9 @@ export class AuthorsEffects {
         return this.http.get<ResDataGetAuthors>('http://localhost:3000/authors' + queryParams)
           .pipe(
             map(resData => {
+              console.log(resData.numOfAuthors);
               return {
-                authors: resData.authors.map(author => {
-                  return {
-                    ...author
-                  };
-                }),
+                authors: resData.authors,
                 numOfAuthors: resData.numOfAuthors ? +resData.numOfAuthors : -1
               };
             }),
@@ -55,7 +51,8 @@ export class AuthorsEffects {
                 numOfAuthors: result.numOfAuthors
               });
             }), catchError(err =>
-              of(AuthorsActions.noAuthorsInDb()))
+              of(AuthorsActions.noAuthorsInDb())
+            )
           );
       })
     ));

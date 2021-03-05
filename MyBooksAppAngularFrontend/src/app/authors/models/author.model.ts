@@ -1,8 +1,8 @@
-import {BookModel} from '../../books/models/book.model';
+import {Book} from '../../books/models/book.model';
 
 export interface Author {
   id: string;
   name: string;
-  books?: BookModel[];
+  books?: Book[];
   numOfBooks?: number;
 }

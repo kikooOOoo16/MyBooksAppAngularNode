@@ -13,6 +13,7 @@ import {NgxPageScrollModule} from 'ngx-page-scroll';
 import {MatInputModule} from '@angular/material/input';
 import { TruncateTextPipe } from '../shared/pipes/truncate-text.pipe';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     NgxPageScrollCoreModule.forRoot({ duration: 600}),
     NgxPageScrollModule,
     MatInputModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatProgressSpinnerModule
   ]
 })
 export class AuthorsModule { }

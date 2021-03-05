@@ -19,7 +19,7 @@ const initialState: State = {
 const _authorsReducer = createReducer(
   initialState,
   on(
-    AuthorActions.startDbCall,
+    AuthorActions.startAuthorsDbCall,
     (state, action) => ({
       ...state,
       dbCall: true

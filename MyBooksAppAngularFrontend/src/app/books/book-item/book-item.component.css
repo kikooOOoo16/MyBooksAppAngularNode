@@ -1,0 +1,9 @@
+.card-img-top {
+  padding: 10px 30px 5px;
+  max-width:100%;
+  height:auto;
+}
+
+.card-content {
+  font-size: 1.1rem;
+}

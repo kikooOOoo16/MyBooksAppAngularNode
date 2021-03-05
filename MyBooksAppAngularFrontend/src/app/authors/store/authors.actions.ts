@@ -19,7 +19,7 @@ export const noAuthorsInDb = createAction(
   '[Authors] No Authors In Db'
 );
 
-export const startDbCall = createAction(
+export const startAuthorsDbCall = createAction(
   '[Authors] Start Database Call'
 );
 

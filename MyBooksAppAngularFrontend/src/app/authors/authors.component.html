@@ -1,5 +1,8 @@
+<div *ngIf="isLoading" class="row">
+  <mat-spinner class="m-auto" ></mat-spinner>
+</div>
 <div class="row">
-  <div class="col-12 text-center my-5">
+  <div *ngIf="!isLoading" class="col-12 text-center my-5">
     <h3>Authors List</h3>
   </div>
   <div class="col-md-12 col-lg-5 col-xl-8 d-flex">

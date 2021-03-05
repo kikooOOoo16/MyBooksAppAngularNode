@@ -14,12 +14,12 @@ import {PageEvent} from '@angular/material/paginator';
   styleUrls: ['./author-list.component.css']
 })
 export class AuthorListComponent implements OnInit, OnDestroy {
+  authors: Author[];
   isLoading = false;
   numOfAuthors = 0;
   pageSize = 10;
   currentPage = 1;
   pageSizeOptions = [1, 2, 5, 10, 15];
-  authors: Author[];
   private storeSub: Subscription;
 
   constructor(
@@ -32,15 +32,18 @@ export class AuthorListComponent implements OnInit, OnDestroy {
       .pipe(
         map(authorsState => {
           return {
+            dbCall: authorsState.dbCall,
             authors: authorsState.authors,
             numOfAuthors: authorsState.numOfAuthors
           };
         })
       ).subscribe((
         {
+          dbCall,
           authors,
           numOfAuthors
         }) => {
+        this.isLoading = dbCall;
         this.authors = authors;
         this.numOfAuthors = numOfAuthors;
       });
@@ -73,7 +76,13 @@ export class AuthorListComponent implements OnInit, OnDestroy {
     this.isLoading = true;
     this.currentPage = $event.pageIndex + 1;
     this.pageSize = $event.pageSize;
-    this.store.dispatch(AuthorsActions.getAuthorsFromDb({searchAuthorQuery: '', pageSize: this.pageSize, currentPage: this.currentPage}));
+    this.store.dispatch(AuthorsActions.getAuthorsFromDb(
+      {
+        searchAuthorQuery: '',
+        pageSize: this.pageSize,
+        currentPage: this.currentPage
+      }
+    ));
     this.router.navigate(['/authors']);
   }
 }
