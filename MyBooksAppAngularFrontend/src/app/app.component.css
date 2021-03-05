@@ -1,0 +1,17 @@
+main {
+  position: relative;
+}
+
+.content {
+  margin-top: 2vh;
+  min-height: 80vh;
+  margin-left: 15ch;
+  margin-right: 15ch;
+}
+
+@media only screen and (max-width: 750px) {
+  .content {
+    margin-left: 3ch;
+    margin-right: 3ch;
+  }
+}

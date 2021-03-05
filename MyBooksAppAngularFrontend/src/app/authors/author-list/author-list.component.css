@@ -1,0 +1,56 @@
+@media (max-width: 575px) {
+  #author-list-hr {
+    width: 288px;
+    margin-left: 0;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 674px) {
+  #author-list-hr {
+    width: 288px;
+    margin-left: 26%;
+  }
+}
+
+@media (min-width: 675px) and (max-width: 750px) {
+  #author-list-hr {
+    width: 300px;
+    margin-left: 28%;
+  }
+}
+
+@media (min-width: 751px) and (max-width: 991px) {
+  #author-list-hr {
+    width: 300px;
+    margin-left: 20%;
+  }
+}
+
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  #author-list-hr {
+    width: 288px;
+    margin-left: 0;
+  }
+}
+
+@media (min-width: 1200px) and (max-width: 1675px) {
+  #author-list-hr {
+    width: 500px;
+    margin-left: 8%;
+  }
+}
+
+@media(min-width: 1676px) and (max-width: 1700px) {
+  #author-list-hr {
+    width: 300px;
+    margin-left: 34%;
+  }
+}
+
+@media(min-width: 1701px) {
+  #author-list-hr {
+    width: 298px;
+    margin-left: 29%;
+  }
+}

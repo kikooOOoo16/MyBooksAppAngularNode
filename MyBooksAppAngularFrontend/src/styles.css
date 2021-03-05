@@ -1,0 +1,199 @@
+/* You can add global styles to this file, and also import other style files */
+.loading-spinner {
+  margin-top: 45vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+/* Page Titles */
+.mat-typography h3 {
+  border-bottom: 1px solid;
+  padding-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #1E1E1E;
+  font-family: 'Josefin Sans',sans-serif;
+  text-shadow: 0 .5rem 1rem rgba(50, 0, 100, .1);
+  font-weight: 400;
+  font-size: 2.4rem;
+  margin-bottom: 3rem;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.mat-typography h4 {
+  margin: 0.4em 0;
+  letter-spacing: 2px;
+  font-weight: 500;
+  font-size: 1.5rem;
+  color: #1E1E1E;
+  text-align: center;
+  overflow: hidden;
+}
+
+span {
+  display: inline-block;
+  position: relative;
+}
+
+span.no-selection:before {
+  content: "";
+  right: 100%;
+  /*border-bottom: 2px solid #F8727D;*/
+  border-bottom: 2px solid #1E1E1E;
+;
+  width: 3em;
+  margin: 0 1.5em;
+  position: absolute;
+  bottom: .5em;
+}
+
+span.no-selection:after {
+  content: "";
+  left: 100%;
+  /*border-bottom: 2px solid #F8727D;*/
+  border-bottom: 2px solid #1E1E1E;
+;
+  width: 3em;
+  margin: 0 1.5em;
+  position: absolute;
+  bottom: .5em;
+}
+
+hr {
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(to right, #f0f0f0, #1E1E1E, #1E1E1E, #f0f0f0);
+}
+
+/* Disabled button styles */
+.button.disabled {
+  border-color: #a9adad !important;
+}
+
+.button.disabled button {
+  color: #a9adad !important;
+}
+
+.button.disabled:hover button {
+  color: #a9adad !important;
+}
+
+.button.disabled:hover .circle {
+  opacity: 0 !important;
+}
+
+/* General Button Styles */
+button {
+  width: inherit;
+  height: inherit;
+  border: none;
+  overflow: hidden;
+  outline: none;
+  background: transparent;
+  cursor: pointer;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-size: .8em;
+  letter-spacing: 1.5px;
+}
+
+button:focus {
+  outline: none;
+}
+
+.button {
+  display: inline-flex;
+  height: 40px;
+  width: 150px;
+  margin: 20px 20px 20px 20px;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+}
+
+.button button {
+  position: relative;
+  transition: all .45s ease-Out;
+}
+
+.circle {
+  width: 0%;
+  height: 0%;
+  opacity: 0;
+  line-height: 40px;
+  border-radius: 50%;
+  position: absolute;
+  transition: all .5s ease-Out;
+  top: 20px;
+  left: 70px;
+}
+
+.button:hover .circle {
+  width: 200%;
+  height: 500%;
+  opacity: 1;
+  top: -70px;
+  left: -70px;
+}
+
+/* Success Button */
+.button.success {
+  border: 2px solid #57B846;
+}
+
+.button.success button {
+  color: #57B846;
+}
+
+.button.success:hover button {
+  color: #ffffff;
+}
+
+.button.success>.circle {
+  background: #57B846;
+}
+
+/* Danger Button */
+.button.danger {
+  border: 2px solid #F8727D;
+  width: 150px;
+}
+
+.button.danger button {
+  color: #F8727D;
+}
+
+.button.danger:hover button {
+  color: #ffffff;
+}
+
+.button.danger>.circle {
+  background: #F8727D;
+}
+
+/* Info Button */
+.button.info {
+  border: 2px solid #C5AA6A;
+  width: 110px;
+}
+
+.button.info button {
+  color: #C5AA6A;
+}
+
+.button.info:hover button {
+  color: #ffffff;
+}
+
+.button.info>.circle {
+  background: #C5AA6A;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

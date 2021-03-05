@@ -1,0 +1,28 @@
+<nav class="nav" #navbar appTrackScroll>
+  <div class="logo">
+    <a class="navbar-brand" routerLink="/authors">
+      <fa-icon class="nav-icons pr-1" [icon]="faBook"></fa-icon>
+      My Book List
+    </a>
+  </div>
+  <div #navbarMainListDiv class="main_list">
+    <ul class="navLinks">
+      <li class="nav-item" [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active">
+        <a class="nav-link ml-2" (click)="toggleDropdown()" routerLink="/">Authors <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item" [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active">
+        <a class="nav-link" (click)="toggleDropdown()" routerLink="/">Books <span class="sr-only">(current)</span></a>
+      </li>
+    </ul>
+  </div>
+  <span  class="navTrigger" #navbarDropdownMenuLink (click)="toggleDropdown()" >
+    <i></i>
+    <i></i>
+    <i></i>
+  </span>
+</nav>
+
+<section class="home">
+  <div class="hero-background"></div>
+  <div class="hero-overlay"></div>
+</section>

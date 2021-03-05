@@ -1,0 +1,13 @@
+<div class="col-12 mb-3">
+  <div class="shadow card bg-light text-center" style="width: 18rem;">
+<!--    <img class="card-img-top img-resize img-responsive" alt="Card image cap">-->
+    <div class="card-body">
+      <h5 class="card-title">{{authorItem.name}}</h5>
+      <p *ngIf="authorItem.numOfBooks" class="card-text">Written books: {{authorItem.numOfBooks}}</p>
+      <div class="button info">
+        <div class="circle"></div>
+        <button class="justify-content-center" type="button" pageScroll href="#author-details" [routerLink]="[authorItem.id]">Show author</button>
+      </div>
+    </div>
+  </div>
+</div>
