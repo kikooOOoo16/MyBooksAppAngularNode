@@ -35,11 +35,11 @@ export class AuthorsEffects {
           queryParams = `?searchAuthorQuery=${actionData.searchAuthorQuery}`;
         } else if (actionData.currentPage > 0 && actionData.pageSize > 0) {
           queryParams = `?pageSize=${actionData.pageSize}&page=${actionData.currentPage}`;
+          console.log(queryParams);
         }
         return this.http.get<ResDataGetAuthors>('http://localhost:3000/authors' + queryParams)
           .pipe(
             map(resData => {
-              console.log(resData.numOfAuthors);
               return {
                 authors: resData.authors,
                 numOfAuthors: resData.numOfAuthors ? +resData.numOfAuthors : -1

@@ -8,10 +8,8 @@ import {AuthorNotSelectedComponent} from './author-not-selected/author-not-selec
 import {AuthorsRoutingModule} from './authors-routing.module';
 import {AuthorItemComponent} from './author-item/author-item.component';
 import {MatExpansionModule} from '@angular/material/expansion';
-import {NgxPageScrollCoreModule} from 'ngx-page-scroll-core';
-import {NgxPageScrollModule} from 'ngx-page-scroll';
 import {MatInputModule} from '@angular/material/input';
-import { TruncateTextPipe } from '../shared/pipes/truncate-text.pipe';
+import {TruncateTextPipe} from '../shared/pipes/truncate-text.pipe';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
@@ -29,11 +27,9 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     RouterModule,
     AuthorsRoutingModule,
     MatExpansionModule,
-    NgxPageScrollCoreModule.forRoot({ duration: 600}),
-    NgxPageScrollModule,
     MatInputModule,
     MatPaginatorModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
   ]
 })
 export class AuthorsModule { }

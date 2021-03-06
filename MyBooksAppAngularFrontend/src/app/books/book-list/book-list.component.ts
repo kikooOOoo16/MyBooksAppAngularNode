@@ -44,6 +44,10 @@ export class BookListComponent implements OnInit {
     } else {
       this.searchBooksByTitleField.nativeElement.value = '';
     }
+    if (this.searchBooksBySeriesField.nativeElement.value === '' && this.searchBooksByTitleField.nativeElement.value === '') {
+      this.store.dispatch(BooksActions.setBooks({books: []}));
+      return;
+    }
 
     this.store.dispatch(BooksActions.getBooksFromDb({searchBookQuery: searchQuery, searchBy}));
     return;
