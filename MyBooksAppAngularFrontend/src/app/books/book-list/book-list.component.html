@@ -1,14 +1,17 @@
-<div class="d-flex d-inline-block">
-  <mat-form-field class="mr-4" style="font-size: 1.2rem; width: 300px">
+<div class="d-flex d-inline-block flex-column flex-md-row">
+  <mat-form-field class=" mr-sm-0 mr-md-4" style="font-size: 1.2rem; width: 300px">
     <mat-label>Search books by name</mat-label>
     <input #searchBooksByNameField (keyup)="bookSearch(searchBooksByNameField, searchBy = 'title')" matInput placeholder="Enter book name">
   </mat-form-field>
-  <mat-form-field style="font-size: 1.2rem; width: 300px" class="ml-4">
+  <mat-form-field style="font-size: 1.2rem; width: 300px" class="ml-0 ml-md-4">
     <mat-label>Search books by series</mat-label>
     <input #searchBooksBySeriesField (keyup)="bookSearch(searchBooksBySeriesField,searchBy = 'series')" matInput placeholder="Enter book series">
   </mat-form-field>
 </div>
-<div class="row">
+<div *ngIf="isLoading" class="row h-100 justify-content-center align-items-center">
+  <mat-spinner></mat-spinner>
+</div>
+<div class="row" *ngIf="!isLoading">
   <h4 class="justify-content-center" *ngIf="books && books.length < 1; else showBooks">No books have been loaded.</h4>
   <ng-template #showBooks>
     <div class="row mb-3 justify-content-sm-center justify-content-md-start">

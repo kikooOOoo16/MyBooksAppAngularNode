@@ -8,8 +8,6 @@ export class ScrollService {
   constructor(private router: Router) {}
   scrollTo(path: string) {
     const { url, elementId } = this.__getUrlAndElementId(path);
-    console.log('url : ', url);
-    console.log('element id : ', elementId);
 
     if (url) {
       this.router.navigate([url]);
@@ -33,7 +31,6 @@ export class ScrollService {
   }
 
   private __getElementById(id: string): HTMLElement {
-    console.log('element id : ', id);
     const element = document.querySelector(`#${id}`) as HTMLElement;
     return element;
   }

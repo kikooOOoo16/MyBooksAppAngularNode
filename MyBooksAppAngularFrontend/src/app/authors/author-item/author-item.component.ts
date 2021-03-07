@@ -16,7 +16,6 @@ export class AuthorItemComponent implements OnInit {
   }
 
   scrollToId(id: string) {
-    console.log('element id : ', id);
     this.scrollService.scrollToElementById(id);
   }
 

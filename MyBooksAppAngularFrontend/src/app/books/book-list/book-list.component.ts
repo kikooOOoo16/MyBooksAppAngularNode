@@ -15,7 +15,7 @@ export class BookListComponent implements OnInit {
   @ViewChild('searchBooksBySeriesField') searchBooksBySeriesField: ElementRef;
   searchBy: string;
   books: Book[];
-  isLoading = true;
+  isLoading = false;
 
   constructor(
     private store: Store<fromApp.AppState>
@@ -45,10 +45,11 @@ export class BookListComponent implements OnInit {
       this.searchBooksByTitleField.nativeElement.value = '';
     }
     if (this.searchBooksBySeriesField.nativeElement.value === '' && this.searchBooksByTitleField.nativeElement.value === '') {
+      this.store.dispatch(BooksActions.startBooksDbCall());
       this.store.dispatch(BooksActions.setBooks({books: []}));
       return;
     }
-
+    this.store.dispatch(BooksActions.startBooksDbCall());
     this.store.dispatch(BooksActions.getBooksFromDb({searchBookQuery: searchQuery, searchBy}));
     return;
   }

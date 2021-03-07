@@ -6,7 +6,7 @@ import {Subscription} from 'rxjs';
 import {map} from 'rxjs/operators';
 import * as AuthorsActions from '../store/authors.actions';
 import {Router} from '@angular/router';
-import {MatPaginator, PageEvent} from '@angular/material/paginator';
+import {PageEvent} from '@angular/material/paginator';
 
 @Component({
   selector: 'app-author-list',
@@ -19,7 +19,6 @@ export class AuthorListComponent implements OnInit, OnDestroy {
   numOfAuthors = 0;
   pageSize = 10;
   currentPage = 0;
-  // pageSizeOptions = [2, 5, 10, 15];
   private storeSub: Subscription;
 
   constructor(
@@ -55,7 +54,7 @@ export class AuthorListComponent implements OnInit, OnDestroy {
 
   authorSearch(searchAuthorInput: HTMLInputElement) {
     if (searchAuthorInput.value) {
-      console.log('Search Author Fired');
+      this.store.dispatch(AuthorsActions.startAuthorsDbCall());
       this.store.dispatch(AuthorsActions.getAuthorsFromDb(
         {
           searchAuthorQuery: searchAuthorInput.value,
@@ -64,6 +63,7 @@ export class AuthorListComponent implements OnInit, OnDestroy {
         }));
       this.router.navigate(['/authors']);
     } else {
+      this.store.dispatch(AuthorsActions.startAuthorsDbCall());
       this.store.dispatch(AuthorsActions.getAuthorsFromDb({
         searchAuthorQuery: '',
         pageSize: this.pageSize,
@@ -77,6 +77,7 @@ export class AuthorListComponent implements OnInit, OnDestroy {
     this.isLoading = true;
     this.currentPage = $event.pageIndex;
     this.pageSize = $event.pageSize;
+    this.store.dispatch(AuthorsActions.startAuthorsDbCall());
     this.store.dispatch(AuthorsActions.getAuthorsFromDb(
       {
         searchAuthorQuery: '',
