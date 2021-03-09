@@ -86,6 +86,12 @@ In order to use this app a mongoDB Atlas API key is needed.
    ```sh
    ng serve
    ```
+Note! : If you get the can't find module environment error in the Angular app when running ng serve, in the src folder just create the environments directory with the default environment.prod.ts and environment.ts files. The default values are: 
+```TS
+export const environment = {
+  production: false
+};
+```
 
 <!-- CONTACT -->
 ## Contact
