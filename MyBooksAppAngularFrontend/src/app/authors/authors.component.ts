@@ -9,25 +9,11 @@ import {Subscription} from 'rxjs';
   templateUrl: './authors.component.html',
   styleUrls: ['./authors.component.css']
 })
-export class AuthorsComponent implements OnInit, OnDestroy {
-  isLoading = true;
-  private authorsSub: Subscription;
-
+export class AuthorsComponent implements OnInit {
   constructor(
-    private store: Store<fromApp.AppState>
   ) { }
 
   ngOnInit(): void {
-    this.authorsSub = this.store.select('authors')
-      .pipe(
-        map(authorState => authorState.dbCall)
-      ).subscribe(dbCall => {
-        this.isLoading = dbCall;
-      });
-  }
-
-  ngOnDestroy(): void {
-    this.authorsSub.unsubscribe();
   }
 
 }

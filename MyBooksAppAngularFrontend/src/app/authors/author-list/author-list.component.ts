@@ -18,6 +18,7 @@ export class AuthorListComponent implements OnInit, OnDestroy {
   isLoading = false;
   numOfAuthors = 0;
   pageSize = 10;
+  pageSizeOptions = [1, 2, 5, 10, 15];
   currentPage = 0;
   private storeSub: Subscription;
 
@@ -82,7 +83,7 @@ export class AuthorListComponent implements OnInit, OnDestroy {
       {
         searchAuthorQuery: '',
         pageSize: this.pageSize,
-        currentPage: this.currentPage
+        currentPage: this.currentPage + 1
       }
     ));
     this.router.navigate(['/authors']);
