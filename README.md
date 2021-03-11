@@ -38,6 +38,7 @@
 ## About The Project
 
 The features that it provides are the following:
+* User authentication.
 * Displaying and querying a list of authors.
 * Displaying a single author's data.
 * Displaying a list of books based on queries related to that book's title or series.
@@ -71,9 +72,10 @@ In order to use this app a mongoDB Atlas API key is needed.
    ```sh
    npm install
    ```
-4. Inside the server root directory add the MongoDB API key in a .env file under the following key (`.env` file)
+4. Inside the server root directory add the MongoDB API key and a JSON web token secret (used for token creation, it can by any string) in a .env file under the following keys (`.env` file)
    ```JS
    MLAB_DATABASE_URL=mongodbAPIkey
+   JSON_WEB_TOKEN_SECRET=jsonwebtokenstring
    ```
    
 ### Initialisation
