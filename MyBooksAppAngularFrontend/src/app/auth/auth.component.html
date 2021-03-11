@@ -1,0 +1,47 @@
+<div class="row text-center mt-4">
+  <div class="auth-form">
+    <div class="auth-header">
+      <div class="auth-header-background"></div>
+      <div class="auth-header-overlay"></div>
+      <div class="auth-header-content">
+        <p *ngIf="isSignInMode" >SIGN IN</p>
+        <p *ngIf="!isSignInMode" >SIGN UP</p>
+      </div>
+    </div>
+    <div class="col-10 mt-4 mx-auto auth-form-content text-center">
+      <form class="align-content-center" [formGroup]="authForm" (ngSubmit)="authFormSubmit()">
+        <div class="auth-form-inputs">
+          <mat-form-field>
+            <input
+              formControlName="email"
+              type="email"
+              matInput
+              placeholder="E-Mail"
+            >
+            <mat-error *ngIf="authForm.get('email').invalid">Please enter a valid email.</mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <input
+              formControlName="password"
+              type="password"
+              matInput
+              placeholder="Password"
+            >
+            <mat-error *ngIf="authForm.get('password').invalid">Please enter a valid password.</mat-error>
+          </mat-form-field>
+          <button class="post-submit-btn mt-3" mat-raised-button color="primary" type="submit">{{ isSignInMode ? 'Sign In' : 'Sign Up'}}</button>
+          <div class="row mt-3">
+            <div class="col-12 auth-form-footer-text">
+              <p *ngIf="isSignInMode" class="text-muted">Dont have an account yet? <br>
+                <a (click)="onSwitchMode()"> Sign Up </a>
+              </p>
+              <p *ngIf="!isSignInMode" class="text-muted">Already have an account? <br>
+                <a (click)="onSwitchMode()"> Sign In </a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

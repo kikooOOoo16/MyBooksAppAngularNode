@@ -39,15 +39,17 @@
 }
 
 .nav div.logo a:hover {
-  /*color: #41E194;*/
   color: #C5AA6A;
 
 }
 
 .nav.affix div.logo a:hover {
-  /*color: #75af66;*/
   color: #C5AA6A;
 }
+
+/*.nav div.navLinks {*/
+/*  flex-direction: row;*/
+/*}*/
 
 .nav div.main_list {
   height: 65px;
@@ -69,6 +71,10 @@
   padding: 0 3rem 0 0;
 }
 
+/*.nav div.main_list ul li.nav-item:nth-child(3) {*/
+/*  margin-left: auto;*/
+/*}*/
+
 .nav div.main_list ul li a {
   text-decoration: none;
   color: #fff;
@@ -78,14 +84,10 @@
 
 .nav div.main_list ul li a:hover {
   color: #C5AA6A;
-  /*color: #41E194;*/
-  /*color: #B8B8B8;*/
 }
 
 .nav.affix div.main_list ul li a:hover {
-  /*color: #75af66;*/
   color: #C5AA6A;
-  /*color: #B8B8B8;*/
 }
 
 /* Home section */
@@ -158,7 +160,6 @@
     right: 0;
     left: 0;
     bottom: 0;
-    /*background-color: #380606; !*#c8b49a;*!*/
     background-color: #4C3C3C; /*#c8b49a;*/
     z-index: 11;
     background-position: center top;
@@ -392,7 +393,5 @@
 
 .affix {
   padding: 0;
-  /*background-color: #380606;*/
   background-color: #4C3C3C;
-  /*background-color: #C8B49A;*/
 }
