@@ -6,6 +6,7 @@ const seeder = require('./seeder');
 
 const authorRoutes = require('./routes/authors');
 const booksRoutes = require('./routes/books');
+const authRoutes = require('./routes/auth');
 const app = express();
 
 //Environment variables config
@@ -46,6 +47,7 @@ app.use((req, res, next) => {
 // Define routes
 app.use('/authors', authorRoutes);
 app.use('/books', booksRoutes);
+app.use('/auth', authRoutes);
 
 
 
