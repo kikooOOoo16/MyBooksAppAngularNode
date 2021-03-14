@@ -95,6 +95,8 @@ export const environment = {
 };
 ```
 
+Note! : If you register a user, add books to the profile page books list and then restart the server while the seed() function is active in app.js, you will break the books list in the profile page. This happens because the book IDs saved in the user object in the DB no longer exist (seeder added new books to the DB resulting in new IDs for each book). Will update seed function to remove books list from user object in DB.
+ 
 <!-- CONTACT -->
 ## Contact
 
