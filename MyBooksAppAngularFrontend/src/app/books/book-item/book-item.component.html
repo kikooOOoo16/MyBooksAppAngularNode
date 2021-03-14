@@ -5,6 +5,7 @@
       <h4 class="card-title">{{bookItem.title}}</h4>
       <p class="card-content" *ngIf="bookItem.series">Series: {{bookItem.series}}</p>
       <p class="mt-2 card-content">By <strong>"{{bookItem.authorName}}"</strong></p>
+      <button *ngIf="isAuth" mat-button (click)="addBookToUserList(bookItem)">Add To My List</button>
     </div>
   </div>
 </div>

@@ -14,7 +14,7 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {BooksEffects} from './books/store/books.effects';
 import {AuthEffects} from './auth/store/auth.effects';
-import { ErrorHandlerComponent } from './error-handler/error-handler.component';
+import {ErrorHandlerComponent} from './error-handler/error-handler.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import * as fromApp from './store/app.reducer';
 import {MatButtonModule} from '@angular/material/button';

@@ -25,6 +25,7 @@
           </mat-expansion-panel-header>
           <p *ngIf="book.series">Series: {{book.series}}</p>
           <p>Year: {{book.year | date: 'YYYY'}}</p>
+          <button *ngIf="isAuth" mat-button (click)="addBookToUserList(book)">Add To My List</button>
         </mat-expansion-panel>
       </mat-accordion>
     </div>

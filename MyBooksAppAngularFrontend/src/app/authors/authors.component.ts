@@ -1,8 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {Store} from '@ngrx/store';
-import * as fromApp from '../store/app.reducer';
-import {map} from 'rxjs/operators';
-import {Subscription} from 'rxjs';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-authors',

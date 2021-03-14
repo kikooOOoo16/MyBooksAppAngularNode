@@ -1,4 +1,5 @@
 import {createAction, props} from '@ngrx/store';
+import {Book, BookStatus} from '../../books/models/book.model';
 
 export const signInStart = createAction(
   '[Auth] Sign In Start',
@@ -27,10 +28,34 @@ export const authenticateSuccess = createAction(
   }>()
 );
 
-export  const authenticateFail = createAction(
-  '[Auth] Authenticate Fail',
+export const addBookToUserList = createAction(
+  '[Auth] Add Book To User List',
   props<{
-    errorMessage: string
+    book: Book
+  }>()
+);
+
+export const updateUserBookListStatus = createAction(
+  '[Auth] Update User List Book Status',
+  props<{
+    book: Book,
+    status: BookStatus
+  }>()
+);
+
+export const removeBookFromUserList = createAction(
+  '[Auth] Remove Book From User List',
+  props<{book: Book}>()
+);
+
+export const getUserBookListFromDB = createAction(
+  '[Auth] Get User Books List From DB'
+);
+
+export const setUserBookList = createAction(
+  '[Auth] Set User Book List',
+  props<{
+    books: Book[]
   }>()
 );
 

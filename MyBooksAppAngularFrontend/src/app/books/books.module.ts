@@ -6,6 +6,7 @@ import {MatInputModule} from '@angular/material/input';
 import {BookItemComponent} from './book-item/book-item.component';
 import {BookListComponent} from './book-list/book-list.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatButtonModule} from '@angular/material/button';
 
 
 @NgModule({
@@ -14,11 +15,12 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     BookItemComponent,
     BookListComponent
   ],
-  imports: [
-    CommonModule,
-    BooksRoutingModule,
-    MatInputModule,
-    MatProgressSpinnerModule
-  ]
+    imports: [
+        CommonModule,
+        BooksRoutingModule,
+        MatInputModule,
+        MatProgressSpinnerModule,
+        MatButtonModule
+    ]
 })
 export class BooksModule { }

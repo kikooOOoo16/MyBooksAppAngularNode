@@ -12,6 +12,7 @@ import {MatInputModule} from '@angular/material/input';
 import {TruncateTextPipe} from '../shared/pipes/truncate-text.pipe';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatButtonModule} from '@angular/material/button';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     MatExpansionModule,
     MatInputModule,
     MatPaginatorModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatButtonModule
   ]
 })
 export class AuthorsModule { }

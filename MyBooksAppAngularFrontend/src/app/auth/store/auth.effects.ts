@@ -2,10 +2,13 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router';
 import {Actions, createEffect, ofType} from '@ngrx/effects';
-import * as AuthActions from './auth.actions';
-import {map, switchMap, tap} from 'rxjs/operators';
+import {map, switchMap, tap, withLatestFrom} from 'rxjs/operators';
 import {AuthService} from '../auth.service';
 import {User} from '../models/user.model';
+import {Store} from '@ngrx/store';
+import * as AuthActions from './auth.actions';
+import * as fromApp from '../../store/app.reducer';
+import {Book, BookStatus} from '../../books/models/book.model';
 
 export interface AuthResponseData {
   message: string;
@@ -17,11 +20,13 @@ export interface AuthResponseData {
 
 @Injectable()
 export class AuthEffects {
+
   constructor(
     private actions$: Actions,
     private http: HttpClient,
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private store: Store<fromApp.AppState>
   ) {
   }
 
@@ -83,8 +88,8 @@ export class AuthEffects {
         const userData: {
           email: string,
           id: string,
-          _token: string,
-          _tokenExpirationDate: string
+          token: string,
+          tokenExpirationDate: string
         } = JSON.parse(localStorage.getItem('userData'));
         if (!userData) {
           return {type: 'AUTOLOGINDUMMY'};
@@ -92,22 +97,82 @@ export class AuthEffects {
         const loadedUser = new User(
           userData.email,
           userData.id,
-          userData._token,
-          new Date(userData._tokenExpirationDate)
+          userData.token,
+          new Date(userData.tokenExpirationDate)
         );
         if (loadedUser.token) {
           const expirationDuration =
-            new Date(userData._tokenExpirationDate).getTime() - new Date().getTime();
+            new Date(userData.tokenExpirationDate).getTime() - new Date().getTime();
           this.authService.setLogoutTimer(expirationDuration);
           return AuthActions.authenticateSuccess({
             email: loadedUser.email,
             userId: loadedUser.id,
             token: loadedUser.token,
-            expirationDate: new Date(userData._tokenExpirationDate),
+            expirationDate: new Date(userData.tokenExpirationDate),
             redirect: false
           });
         }
         return {type: 'AUTOLOGINDUMMY'};
+      })
+    )
+  );
+
+  saveUserBooksListToDb$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(AuthActions.addBookToUserList, AuthActions.updateUserBookListStatus, AuthActions.removeBookFromUserList),
+      withLatestFrom(this.store.select('auth')),
+      switchMap(([actionData, authState]) => {
+        return this.http.put(
+          `http://localhost:3000/auth/${authState.user.id}`,
+          {
+            booksList: [...authState.user.booksList.map(book => {
+              return {
+                id: book._id,
+                status: book.bookStatus
+              };
+            })]
+          });
+      })
+    ), { dispatch: false }
+  );
+
+  getUserBooksListFromDb$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(AuthActions.getUserBookListFromDB),
+      withLatestFrom(this.store.select('auth')),
+      switchMap(([actionData, authState]) => {
+        return this.http.get<{
+          booksList: [
+            {
+              book: Book,
+              status: BookStatus
+            }
+          ],
+          message: string
+        }>(`http://localhost:3000/auth/${authState.user.id}`)
+          .pipe(
+            map(resData => {
+              let editedReturnedData = [];
+              if (resData) {
+                editedReturnedData = (resData.booksList.map(resObject => {
+                    return {
+                      _id: resObject.book._id,
+                      title: resObject.book.title,
+                      authorName: resObject.book.authorName,
+                      year: resObject.book.year,
+                      series: resObject.book.series,
+                      seriesIndex: resObject.book.seriesIndex,
+                      bookStatus: resObject.status
+                    };
+                  })
+                );
+                return editedReturnedData;
+              }
+            }),
+            map(editedReturnData => {
+              return AuthActions.setUserBookList({books: editedReturnData});
+            })
+          );
       })
     )
   );

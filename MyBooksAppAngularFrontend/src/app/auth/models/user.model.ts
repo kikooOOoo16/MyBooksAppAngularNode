@@ -1,18 +1,19 @@
+import {Book} from '../../books/models/book.model';
+
 export class User {
 
   constructor(
     public email: string,
     public id: string,
-    // tslint:disable-next-line:variable-name
-    private _token: string,
-    // tslint:disable-next-line:variable-name
-    private _tokenExpirationDate: Date
+    public token: string,
+    public tokenExpirationDate: Date,
+    public booksList: Book[] = []
   ) {}
 
-  get token(): string {
-    if (!this._tokenExpirationDate || new Date() > this._tokenExpirationDate) {
-      return null;
-    }
-    return this._token;
-  }
+  // get token(): string {
+  //   if (!this.tokenExpirationDate || new Date() > this.tokenExpirationDate) {
+  //     return null;
+  //   }
+  //   return this._token;
+  // }
 }

@@ -1,0 +1,41 @@
+<div class="row my-4 text-center justify-content-center">
+  <h3 class="my-4">My Books List</h3>
+</div>
+<div *ngIf="userBooksList.length === 0" class="row my-4 justify-content-center text-center">
+  <h4>You have no books in your list.</h4>
+</div>
+<div *ngIf="userBooksList.length > 0" class="row mt-2 justify-content-center">
+  <table class="table w-75">
+    <thead class="thead-light">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Title</th>
+      <th scope="col">Author</th>
+      <th scope="col">Series</th>
+      <th scope="col">Status</th>
+      <th scope="col">Remove</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let book of userBooksList; let i = index">
+      <th scope="row">{{ i + 1 }}</th>
+      <td>{{book.title}}</td>
+      <td>{{book.authorName}}</td>
+      <td>{{ book.series ? book.series: ''}}</td>
+      <td>
+        <div ngbDropdown class="d-inline-block">
+          <button class="btn" id="books-status-button" ngbDropdownToggle>{{book.bookStatus}}</button>
+          <div ngbDropdownMenu aria-labelledby="books-status-button">
+            <button *ngFor="let status of booksStatuses()" (click)="changeBookStatus(book, status)" ngbDropdownItem>{{status}}</button>
+          </div>
+        </div>
+      </td>
+      <td>
+        <button class="remove-button align-content-center" (click)="removeBookFromList(book)">
+          <fa-icon class="nav-icons pr-1" [icon]="trash"></fa-icon>
+        </button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
