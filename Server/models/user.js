@@ -3,7 +3,16 @@ const uniqueValidator = require('mongoose-unique-validator'); // we use this as 
 
 const userSchema = mongoose.Schema({
     email: {type: String, require: true, unique: true}, // unique does internal mongoose optimization it isn't a validator like required
-    password: {type: String, required: true}
+    password: {type: String, required: true},
+    books: [
+        {
+            book: {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: 'Book'
+            },
+            status: {type: String}
+        }
+    ]
 });
 
 userSchema.plugin(uniqueValidator); // same email error will be thrown now

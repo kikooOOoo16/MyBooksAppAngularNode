@@ -38,11 +38,12 @@ let seedData = (numOfRecords) => {
                                 seriesIndex: book.seriesIndex,
                                 authorName: authors[i].name
                             });
-                            newBook.save().then(savedBook => {
-                                newAuthor.books.push({
-                                    _id: savedBook._id
-                                })
-                            }).then(() => {
+                            newBook.save()
+                                .then(savedBook => {
+                                    newAuthor.books.push({
+                                        _id: savedBook._id
+                                    })
+                                }).then(() => {
                                 if (index === authors[i].books.length - 1) {
                                     resolve();
                                 }

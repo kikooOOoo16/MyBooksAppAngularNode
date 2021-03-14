@@ -7,4 +7,8 @@ router.post('/signin', authControllers.authSignIn);
 
 router.post('/signup', authControllers.authSignUp);
 
+router.put('/:id', authControllers.updateUserBooksList);
+
+router.get('/:id', authControllers.getUserBooksList);
+
 module.exports = router;

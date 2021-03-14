@@ -60,3 +60,49 @@ exports.authSignUp = (req, res, next) => {
             });
         });
 }
+
+exports.updateUserBooksList = (req, res, next) => {
+    let books = [];
+    if (req.body.booksList) {
+        new Promise((resolve, reject) => {
+            req.body.booksList.forEach((book, index) => {
+                books.push({
+                    book: book.id,
+                    status: book.status ? book.status : ''
+                });
+                if (index === req.body.booksList.length - 1) {
+                    resolve();
+                }
+            });
+        }).then(() => {
+            User.findByIdAndUpdate(req.params.id, {books: [...books]})
+                .then(() => {
+                    books = [];
+                    res.status(200).json({
+                        message: 'Successfully saved user books list to DB.'
+                    })
+                })
+                .catch(err => {
+                    res.status(500).json({
+                        message: 'Failed to save user\'s books list!'
+                    });
+                })
+        })
+    }
+}
+
+
+exports.getUserBooksList = (req, res, next) => {
+    User.findById(req.params.id).populate('books.book').exec((err, result) => {
+        if (result) {
+            res.status(200).json({
+                message: 'Successfully retrieved user\'s books list.',
+                booksList: result.books
+            })
+        } else {
+            res.status(404).json({
+                message: 'Failed to retrieve user\'s books list.'
+            })
+        }
+    })
+}
