@@ -19,6 +19,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import * as fromApp from './store/app.reducer';
 import {MatButtonModule} from '@angular/material/button';
 import {ErrorInterceptor} from './error-handler/error.interceptor';
+import {AuthInterceptor} from './auth/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import {ErrorInterceptor} from './error-handler/error.interceptor';
     MatButtonModule
   ],
   providers: [
+    { provide: HTTP_INTERCEPTORS, useClass:  AuthInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass:  ErrorInterceptor, multi: true }
   ],
   entryComponents: [ErrorHandlerComponent],
