@@ -1,10 +1,11 @@
 <!-- PROJECT LOGO -->
 <p align="center">
   <h3 align="center">My Books Angular NodeJS app</h3>
-
   <p align="center">
     A simple NodeJS, Express web app with an Angular front end
-    <br />
+    <br/>
+    <br/>
+    <a href="http://angular-my-books-list.s3-website.us-east-2.amazonaws.com/">View App</a>
   </p>
 </p>
 <br/>
@@ -39,6 +40,7 @@
 
 The features that it provides are the following:
 * User authentication.
+* User profile page with a personal list of books.
 * Displaying and querying a list of authors.
 * Displaying a single author's data.
 * Displaying a list of books based on queries related to that book's title or series.
