@@ -5,6 +5,7 @@ import {HttpClient} from '@angular/common/http';
 import * as BooksActions from './books.actions';
 import {catchError, map, switchMap} from 'rxjs/operators';
 import {of} from 'rxjs';
+import {environment} from '../../../environments/environment';
 
 interface ResDataGetBooks {
   books: Book[];
@@ -29,7 +30,7 @@ export class BooksEffects {
         } else if (actionData.searchBy === 'series') {
           queryParams = `?searchBooksBySeriesQuery=${actionData.searchBookQuery}`;
         }
-        return this.http.get<ResDataGetBooks>('http://localhost:3000/books' + queryParams)
+        return this.http.get<ResDataGetBooks>(`${environment.apiUrl}books${queryParams}`)
           .pipe(
             map(resData => {
               return {

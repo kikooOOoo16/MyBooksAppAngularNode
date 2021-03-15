@@ -9,6 +9,7 @@ import {Store} from '@ngrx/store';
 import * as AuthActions from './auth.actions';
 import * as fromApp from '../../store/app.reducer';
 import {Book, BookStatus} from '../../books/models/book.model';
+import {environment} from '../../../environments/environment';
 
 export interface AuthResponseData {
   message: string;
@@ -34,7 +35,7 @@ export class AuthEffects {
     this.actions$.pipe(
       ofType(AuthActions.signUpStart),
       switchMap(action => {
-        return this.http.post<AuthResponseData>('http://localhost:3000/auth/signup', {
+        return this.http.post<AuthResponseData>(`${environment.apiUrl}auth/signup`, {
           email: action.email,
           password: action.password
         }).pipe(
@@ -53,7 +54,7 @@ export class AuthEffects {
     this.actions$.pipe(
       ofType(AuthActions.signInStart),
       switchMap(action => {
-        return this.http.post<AuthResponseData>('http://localhost:3000/auth/signin',
+        return this.http.post<AuthResponseData>(`${environment.apiUrl}auth/signin`,
           {
             email: action.email,
             password: action.password
@@ -123,7 +124,7 @@ export class AuthEffects {
       withLatestFrom(this.store.select('auth')),
       switchMap(([actionData, authState]) => {
         return this.http.put(
-          `http://localhost:3000/auth/${authState.user.id}`,
+          `${environment.apiUrl}auth/${authState.user.id}`,
           {
             booksList: [...authState.user.booksList.map(book => {
               return {
@@ -149,7 +150,7 @@ export class AuthEffects {
             }
           ],
           message: string
-        }>(`http://localhost:3000/auth/${authState.user.id}`)
+        }>(`${environment.apiUrl}auth/${authState.user.id}`)
           .pipe(
             map(resData => {
               let editedReturnedData = [];

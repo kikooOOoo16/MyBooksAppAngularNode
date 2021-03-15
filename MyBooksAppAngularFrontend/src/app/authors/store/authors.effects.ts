@@ -5,6 +5,7 @@ import * as AuthorsActions from './authors.actions';
 import {catchError, map, switchMap} from 'rxjs/operators';
 import {Author} from '../models/author.model';
 import {of} from 'rxjs';
+import {environment} from '../../../environments/environment';
 
 interface ResDataGetAuthors {
   message: string;
@@ -36,7 +37,7 @@ export class AuthorsEffects {
         } else if (actionData.currentPage > 0 && actionData.pageSize > 0) {
           queryParams = `?pageSize=${actionData.pageSize}&page=${actionData.currentPage}`;
         }
-        return this.http.get<ResDataGetAuthors>('http://localhost:3000/authors' + queryParams)
+        return this.http.get<ResDataGetAuthors>(`${environment.apiUrl}authors` + queryParams)
           .pipe(
             map(resData => {
               return {
@@ -63,7 +64,7 @@ export class AuthorsEffects {
         if (!actionData.id.match(/^[0-9a-fA-F]{24}$/)) {
           throw  new Error('Not an author id');
         }
-        return this.http.get<ResDataGetAuthor>('http://localhost:3000/authors/' + actionData.id)
+        return this.http.get<ResDataGetAuthor>(`${environment.apiUrl}authors/${actionData.id}`)
           .pipe(
             map(resData => {
               return {
