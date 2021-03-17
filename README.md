@@ -1,10 +1,11 @@
 <!-- PROJECT LOGO -->
 <p align="center">
   <h3 align="center">My Books Angular NodeJS app</h3>
-
   <p align="center">
     A simple NodeJS, Express web app with an Angular front end
-    <br />
+    <br/>
+    <br/>
+    <a href="http://angular-my-books-list.s3-website.us-east-2.amazonaws.com/">View App</a>
   </p>
 </p>
 <br/>
@@ -39,6 +40,7 @@
 
 The features that it provides are the following:
 * User authentication.
+* User profile page with a personal list of books.
 * Displaying and querying a list of authors.
 * Displaying a single author's data.
 * Displaying a list of books based on queries related to that book's title or series.
@@ -77,7 +79,13 @@ In order to use this app a mongoDB Atlas API key is needed.
    MLAB_DATABASE_URL=mongodbAPIkey
    JSON_WEB_TOKEN_SECRET=jsonwebtokenstring
    ```
-   
+5. Inside the angular app, in the src directory, create the environments directory and add the following value:
+      ```TS
+    export const environment = {
+      production: false,
+      apiUrl: 'http://localhost:3000/'
+    };
+   ```
 ### Initialisation
 
 1. The server's start script is configured with [nodemon](https://www.npmjs.com/package/nodemon). To start the server just run :
@@ -88,13 +96,6 @@ In order to use this app a mongoDB Atlas API key is needed.
    ```sh
    ng serve
    ```
-Note! : If you get the can't find module environment error in the Angular app when running ng serve, in the src folder just create the environments directory with the default environment.prod.ts and environment.ts files. The default values are: 
-```TS
-export const environment = {
-  production: false
-};
-```
-
 Note! : If you register a user, add books to the profile page books list and then restart the server while the seed() function is active in app.js, you will break the books list in the profile page. This happens because the book IDs saved in the user object in the DB no longer exist (seeder added new books to the DB resulting in new IDs for each book). Will update seed function to remove books list from user object in DB.
  
 <!-- CONTACT -->
