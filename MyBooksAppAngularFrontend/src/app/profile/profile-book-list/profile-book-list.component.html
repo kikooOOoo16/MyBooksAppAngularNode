@@ -1,10 +1,28 @@
 <div class="row my-4 text-center justify-content-center">
   <h3 class="my-4">My Books List</h3>
 </div>
-<div *ngIf="userBooksList.length === 0" class="row my-4 justify-content-center text-center">
+<div *ngIf="userBooksList.length > 1" class="my-4 book-list-filter">
+  <div>
+    <h4>Filter books: </h4>
+  </div>
+  <div class="w-100 d-md-flex justify-content-center">
+    <div class="button info">
+      <div class="circle"></div>
+      <button (click)="filterTable('All')" type="button">All</button>
+    </div>
+    <div *ngFor="let status of booksStatuses()" class="button info">
+      <div class="circle"></div>
+      <button type="button" (click)="filterTable(status)">{{status}}</button>
+    </div>
+  </div>
+</div>
+<div *ngIf="filteredBooksList.length === 0 && userBooksList.length === 0" class="row my-4 justify-content-center text-center">
   <h4>You have no books in your list.</h4>
 </div>
-<div *ngIf="userBooksList.length > 0" class="row mt-2 justify-content-center">
+<div *ngIf="filteredBooksList.length === 0 && userBooksList.length !== 0" class="row my-4 justify-content-center text-center">
+  <h4>You have no books in your list with that status.</h4>
+</div>
+<div *ngIf="filteredBooksList.length > 0" class="row mt-2 mb-4 justify-content-center">
   <table class="table w-75">
     <thead class="thead-light">
     <tr>
@@ -17,7 +35,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let book of userBooksList; let i = index">
+    <tr *ngFor="let book of filteredBooksList; let i = index">
       <th scope="row">{{ i + 1 }}</th>
       <td>{{book.title}}</td>
       <td>{{book.authorName}}</td>

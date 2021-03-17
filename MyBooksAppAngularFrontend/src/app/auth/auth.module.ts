@@ -1,12 +1,9 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {AuthComponent} from './auth.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {AuthRoutingModule} from './auth-routing.module';
-import {MatCardModule} from '@angular/material/card';
-import {MatInputModule} from '@angular/material/input';
-import {MatButtonModule} from '@angular/material/button';
-
+import {AngularMaterialModule} from '../ng-material/ng-material.module';
 
 
 @NgModule({
@@ -17,9 +14,7 @@ import {MatButtonModule} from '@angular/material/button';
     ReactiveFormsModule,
     AuthRoutingModule,
     CommonModule,
-    MatCardModule,
-    MatInputModule,
-    MatButtonModule
+    AngularMaterialModule
   ],
   exports: [
     AuthComponent

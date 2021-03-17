@@ -1,5 +1,6 @@
 <div class="row text-center mt-4">
-  <div class="auth-form">
+  <mat-spinner class="m-auto mt-4" *ngIf="isLoading"></mat-spinner>
+  <div *ngIf="!isLoading" class="auth-form">
     <div class="auth-header">
       <div class="auth-header-background"></div>
       <div class="auth-header-overlay"></div>

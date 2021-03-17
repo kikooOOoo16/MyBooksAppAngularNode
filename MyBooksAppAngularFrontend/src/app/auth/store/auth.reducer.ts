@@ -24,7 +24,7 @@ const _authReducer = createReducer(
     (state => ({
       ...state,
       authError: null,
-      loading: false
+      loading: true
     }))
   ),
   on(
@@ -37,7 +37,8 @@ const _authReducer = createReducer(
         action.token,
         action.expirationDate
       ),
-      authError: null
+      authError: null,
+      loading: false
     })
   ),
   on(
@@ -114,7 +115,8 @@ const _authReducer = createReducer(
     AuthActions.clearError,
     (state) => ({
       ...state,
-      authError: null
+      authError: null,
+      loading: false
     })
   )
 );

@@ -7,12 +7,8 @@ import {RouterModule} from '@angular/router';
 import {AuthorNotSelectedComponent} from './author-not-selected/author-not-selected.component';
 import {AuthorsRoutingModule} from './authors-routing.module';
 import {AuthorItemComponent} from './author-item/author-item.component';
-import {MatExpansionModule} from '@angular/material/expansion';
-import {MatInputModule} from '@angular/material/input';
 import {TruncateTextPipe} from '../shared/pipes/truncate-text.pipe';
-import {MatPaginatorModule} from '@angular/material/paginator';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-import {MatButtonModule} from '@angular/material/button';
+import {AngularMaterialModule} from '../ng-material/ng-material.module';
 
 
 @NgModule({
@@ -27,11 +23,7 @@ import {MatButtonModule} from '@angular/material/button';
     CommonModule,
     RouterModule,
     AuthorsRoutingModule,
-    MatExpansionModule,
-    MatInputModule,
-    MatPaginatorModule,
-    MatProgressSpinnerModule,
-    MatButtonModule
+    AngularMaterialModule
   ]
 })
 export class AuthorsModule { }

@@ -15,6 +15,7 @@ import {faTrashAlt} from '@fortawesome/free-solid-svg-icons';
 export class ProfileBookListComponent implements OnInit {
   private authSub: Subscription;
   userBooksList: Book[] = [];
+  filteredBooksList: Book[] = [];
   booksStatus = BookStatus;
   trash = faTrashAlt;
 
@@ -32,6 +33,7 @@ export class ProfileBookListComponent implements OnInit {
       })
     ).subscribe(books => {
       this.userBooksList = books;
+      this.filteredBooksList = [...this.userBooksList];
     });
   }
 
@@ -48,4 +50,12 @@ export class ProfileBookListComponent implements OnInit {
   removeBookFromList(book: Book) {
     this.store.dispatch(AuthActions.removeBookFromUserList({book}));
   }
+
+  filterTable(filterBy: string) {
+    if (filterBy === 'All') {
+      return this.filteredBooksList = [...this.userBooksList];
+    }
+    return this.filteredBooksList = [...this.userBooksList.filter(book => book.bookStatus === filterBy)];
+  }
+
 }
