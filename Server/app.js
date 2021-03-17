@@ -15,7 +15,12 @@ require('dotenv').config();
 
 // setup mongoose Atlas connection
 mongoose.connect(process.env.MLAB_DATABASE_URL,
-    {useNewUrlParser: true, useUnifiedTopology: true})
+    {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+        useFindAndModify: false,
+        useCreateIndex: true
+    })
     .then(() => {
         console.log('Connected to DB!')
     })
@@ -28,7 +33,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
 // Seed DB
-seeder(60);
+// seeder(160);
 
 // Allow CORS communication
 app.use((req, res, next) => {

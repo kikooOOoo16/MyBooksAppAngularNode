@@ -1,4 +1,4 @@
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const jsonwebtoken = require('jsonwebtoken');
 const User = require('../models/user');
 
@@ -16,7 +16,7 @@ exports.authSignIn = (req, res, next) => {
                 .then(result => {
                     if (!result) {
                         return res.status(401).json({
-                            message: 'User authentication failed!'
+                            message: 'Invalid authentication credentials!'
                         });
                     }
                     const token = jsonwebtoken.sign(
@@ -55,7 +55,7 @@ exports.authSignUp = (req, res, next) => {
                     })
                 }).catch(err => {
                 res.status(500).json({
-                    message: 'Invalid authentication credentials!'
+                    message: 'There is already an account associated with this email address!'
                 });
             });
         });
