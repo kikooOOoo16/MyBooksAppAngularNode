@@ -3,15 +3,28 @@ main {
 }
 
 .content {
-  margin-top: 2vh;
+  position: relative;
+  background-image: url("../assets/images/content-cover.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: 20;
+}
+.row {
   min-height: 80vh;
   margin-left: 15ch;
   margin-right: 15ch;
 }
 
 @media only screen and (max-width: 750px) {
-  .content {
-    margin-left: 3ch;
-    margin-right: 3ch;
+  /*.content {*/
+  /*  margin-left: 3ch;*/
+  /*  margin-right: 3ch;*/
+  /*}*/
+  .row {
+    padding-left: 3ch;
+    padding-right: 3ch;
+    margin-left: 1ch;
+    margin-right: 1ch;
   }
 }

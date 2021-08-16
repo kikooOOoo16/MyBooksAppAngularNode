@@ -2,7 +2,7 @@
   <div class="shadow card bg-light text-center" style="width: 18rem;">
     <img class="card-img-top img-resize img-responsive" src="../../assets/images/generic-book-cover.png" alt="Card image cap">
     <div class="card-body">
-      <h4 class="card-title">{{bookItem.title}}</h4>
+      <h5 class="card-title">{{bookItem.title}}</h5>
       <p class="card-content" *ngIf="bookItem.series">Series: {{bookItem.series}}</p>
       <p class="mt-2 card-content">By <strong>"{{bookItem.authorName}}"</strong></p>
       <button *ngIf="isAuth" mat-button (click)="addBookToUserList(bookItem)">Add To My List</button>

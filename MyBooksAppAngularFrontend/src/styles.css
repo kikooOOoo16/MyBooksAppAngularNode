@@ -9,19 +9,58 @@
 }
 
 /* Page Titles */
+
 .mat-typography h3 {
-  border-bottom: 1px solid;
-  padding-bottom: 1rem;
+  position: relative;
+  padding: 0;
+  margin: 0;
+  font-family: "Raleway", sans-serif;
+  font-weight: 300;
+  text-align: center;
+  font-size: 1.8rem;
+  color:#222;
+  letter-spacing:1px;
   text-transform: uppercase;
-  letter-spacing: 2px;
-  color: #1E1E1E;
-  font-family: 'Josefin Sans',sans-serif;
-  text-shadow: 0 .5rem 1rem rgba(50, 0, 100, .1);
-  font-weight: 400;
-  font-size: 2.4rem;
-  margin-bottom: 3rem;
-  display: inline-block;
-  vertical-align: top;
+  display: grid;
+  grid-template-columns: 1fr max-content 1fr;
+  grid-template-rows: 27px 0;
+  grid-gap: 20px;
+  align-items: center;
+  -webkit-transition: all 0.4s ease 0s;
+  -o-transition: all 0.4s ease 0s;
+  transition: all 0.4s ease 0s;
+}
+
+.mat-typography h3 span {
+  display: block;
+  font-size: 0.5em;
+  line-height: 1.3;
+}
+.mat-typography h3 em {
+  font-style: normal;
+  font-weight: 600;
+}
+
+.mat-typography h3:after {
+  content: " ";
+  display: block;
+  border-bottom: 1px solid #893f2d;
+  border-top: 1px solid #893f2d;
+  height: 5px;
+  width: 20%;
+  background-color:#f8f8f8;
+  margin-right: auto;
+}
+
+.mat-typography h3:before {
+  margin-left: auto;
+  content: " ";
+  display: block;
+  border-bottom: 1px solid #893f2d;
+  border-top: 1px solid #893f2d;
+  height: 5px;
+  width: 20%;
+  background-color:#f8f8f8;
 }
 
 .mat-typography h4 {
@@ -32,6 +71,44 @@
   color: #1E1E1E;
   text-align: center;
   overflow: hidden;
+}
+
+.mat-typography h5 {
+  position: relative;
+  margin: 0 0 20px;
+  font-family: "Raleway", sans-serif;
+  font-weight: 300;
+  font-size: 20px;
+  color: #080808;
+  text-align: center;
+  text-transform: uppercase;
+  padding: 0 0 3px;
+  -webkit-transition: all 0.4s ease 0s;
+  -o-transition: all 0.4s ease 0s;
+  transition: all 0.4s ease 0s;
+}
+
+.mat-typography h5:before {
+  width: 28px;
+  height: 5px;
+  display: block;
+  content: "";
+  position: absolute;
+  bottom: 3px;
+  left: 50%;
+  margin-left: -14px;
+  background-color: #893f2d;;
+}
+.mat-typography h5:after {
+  width: 100px;
+  height: 1px;
+  display: block;
+  content: "";
+  position: relative;
+  margin-top: 25px;
+  left: 50%;
+  margin-left: -50px;
+  background-color: #893f2d;;
 }
 
 span {

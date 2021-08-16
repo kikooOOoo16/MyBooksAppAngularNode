@@ -20,6 +20,7 @@ import * as fromApp from './store/app.reducer';
 import {MatButtonModule} from '@angular/material/button';
 import {ErrorInterceptor} from './error-handler/error.interceptor';
 import {AuthInterceptor} from './auth/auth.interceptor';
+import { ParallaxDirective } from './shared/directives/parallax.directive';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import {AuthInterceptor} from './auth/auth.interceptor';
     HeaderComponent,
     AppTrackScrollDirective,
     ErrorHandlerComponent,
+    ParallaxDirective,
   ],
   imports: [
     BrowserModule,
