@@ -2,3 +2,11 @@
   <h3>Books List</h3>
 </div>
 <app-book-list></app-book-list>
+<ng-go-top-button
+  [animate]="true"
+  [speed]="50"
+  [acceleration]="2"
+  [scrollDistance]="300"
+  [classNames]="'to-top-btn'">
+  <fa-icon id="faAngleUp" [icon]="faAngleUp"></fa-icon>
+</ng-go-top-button>

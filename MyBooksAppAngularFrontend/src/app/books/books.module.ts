@@ -5,6 +5,8 @@ import {BooksRoutingModule} from './books-routing.module';
 import {BookItemComponent} from './book-item/book-item.component';
 import {BookListComponent} from './book-list/book-list.component';
 import {AngularMaterialModule} from '../ng-material/ng-material.module';
+import {GoTopButtonModule} from 'ng-go-top-button';
+import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 
 
 @NgModule({
@@ -16,7 +18,9 @@ import {AngularMaterialModule} from '../ng-material/ng-material.module';
   imports: [
     CommonModule,
     BooksRoutingModule,
-    AngularMaterialModule
+    AngularMaterialModule,
+    GoTopButtonModule,
+    FontAwesomeModule
   ]
 })
 export class BooksModule { }

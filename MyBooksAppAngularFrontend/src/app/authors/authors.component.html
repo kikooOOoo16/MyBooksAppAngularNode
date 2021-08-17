@@ -9,4 +9,12 @@
   <div class="col-mg-0 col-lg-4 col-xl-4 mt-5 pr-lg-0 justify-content-center">
     <router-outlet></router-outlet>
   </div>
+  <ng-go-top-button
+    [animate]="true"
+    [speed]="50"
+    [acceleration]="2"
+    [scrollDistance]="300"
+    [classNames]="'to-top-btn'">
+    <fa-icon id="faAngleUp" [icon]="faAngleUp"></fa-icon>
+  </ng-go-top-button>
 </div>

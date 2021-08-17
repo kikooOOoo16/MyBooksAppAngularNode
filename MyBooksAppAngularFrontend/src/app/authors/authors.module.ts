@@ -9,6 +9,8 @@ import {AuthorsRoutingModule} from './authors-routing.module';
 import {AuthorItemComponent} from './author-item/author-item.component';
 import {TruncateTextPipe} from '../shared/pipes/truncate-text.pipe';
 import {AngularMaterialModule} from '../ng-material/ng-material.module';
+import {GoTopButtonModule} from 'ng-go-top-button';
+import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 
 
 @NgModule({
@@ -23,7 +25,9 @@ import {AngularMaterialModule} from '../ng-material/ng-material.module';
     CommonModule,
     RouterModule,
     AuthorsRoutingModule,
-    AngularMaterialModule
+    AngularMaterialModule,
+    GoTopButtonModule,
+    FontAwesomeModule
   ]
 })
 export class AuthorsModule { }

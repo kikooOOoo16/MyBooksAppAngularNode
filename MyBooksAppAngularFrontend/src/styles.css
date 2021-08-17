@@ -272,3 +272,90 @@ button:focus {
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/* Back to top button */
+
+ng-go-top-button > button {
+  display: inline-block;
+  background-color: #4C3C3C;
+  width: 60px;
+  height: 60px;
+  text-align: center;
+  border-radius: 30px;
+  border-width: 0;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  opacity: 1;
+  z-index: 1000;
+  transition: background-color .3s,
+  opacity .5s, visibility .5s;
+  -webkit-box-shadow: 0 8px 11px 6px rgba(0,0,0,0.42);
+  box-shadow: 0 8px 11px 6px rgba(0,0,0,0.42);
+}
+
+ng-go-top-button > button:focus {
+  outline: none;
+}
+
+ng-go-top-button > button::after {
+  font-family: FontAwesome, serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 2em;
+  line-height: 50px;
+  color: #fff;
+}
+
+ng-go-top-button > button:hover {
+  cursor: pointer;
+  background-color: #BFA567;
+}
+
+ng-go-top-button > button:active {
+  background-color: #BFA567;
+}
+
+ng-go-top-button > button.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+#faAngleUp {
+  color: white;
+  font-size: 1.8em;
+  transition: font-size .3s;
+}
+
+ng-go-top-button:hover > #faAngleUp {
+  top: -10px;
+  font-size: 2.5em;
+}
+
+@media(max-width: 1024px) and (max-height: 1366px) {
+  ng-go-top-button {
+    right: 50px;
+    bottom: 20px;
+  }
+}
+
+@media(max-width: 411px) and (max-height: 823px) {
+  ng-go-top-button {
+    right: 30px;
+    bottom: 16px;
+  }
+}
+
+@media(max-width: 414px) and (max-height: 736px) {
+  ng-go-top-button {
+    right: 30px;
+    bottom: 20px;
+  }
+}
+
+@media(max-width: 375px) and (max-height: 667px) {
+  ng-go-top-button {
+    right: 25px;
+    bottom: 25px;
+  }
+}

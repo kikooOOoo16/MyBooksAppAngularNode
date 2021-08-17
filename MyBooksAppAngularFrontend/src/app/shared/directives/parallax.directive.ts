@@ -24,6 +24,9 @@ export class ParallaxDirective {
   }
 
   private getTranslation() {
-    return window.scrollY * this.factor / 10;
+    if (window.scrollY < 600) {
+      return window.scrollY * this.factor / 10;
+    }
+    return 200;
   }
 }
