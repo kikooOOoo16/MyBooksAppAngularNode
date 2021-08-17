@@ -33,7 +33,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
 // Seed DB
-// seeder(160);
+// seeder(100);
 
 // Allow CORS communication
 app.use((req, res, next) => {
