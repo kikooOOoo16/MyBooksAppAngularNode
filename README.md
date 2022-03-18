@@ -6,6 +6,7 @@
     <br/>
     <br/>
     <a href="https://my-books-list-153c5.web.app/">View Angular App</a>
+    <br/>
     <a href="https://my-books-app-server.herokuapp.com/">Server API Endpoint</a>
   </p>
 </p>
