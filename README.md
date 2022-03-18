@@ -5,7 +5,8 @@
     A simple NodeJS, Express web app with an Angular front end
     <br/>
     <br/>
-    <a href="http://angular-my-books-list.s3-website.us-east-2.amazonaws.com/">View App</a>
+    <a href="https://my-books-list-153c5.web.app/">View Angular App</a>
+    <a href="https://my-books-app-server.herokuapp.com/">Server API Endpoint</a>
   </p>
 </p>
 <br/>
