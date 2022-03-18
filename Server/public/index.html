@@ -1,0 +1,236 @@
+<h2 id="my-books-list-manager-node-js-api">My Books List Manager Node.js API</h2>
+<p>A simple NodeJS, Express API  </p>
+<p>Table of Contents</p>
+<ol>
+    <li><a href="#about-the-project">About The Project</a><ul>
+        <li><a href="#built-with">Built With</a></li>
+    </ul>
+    </li>
+    <li><a href="#description">Description</a><ul>
+        <li><a href="#auth-routes">Auth routes</a></li>
+        <li><a href="#authors-routes">Authors routes</a></li>
+        <li><a href="#books-routes">Books routes</a></li>
+    </ul>
+    </li>
+</ol>
+<h2 id="about-the-project">About The Project</h2>
+<p>An API that allows users access to information about books and authors. The users can create a custom reading list of selected books. The features that the API provides are the following:</p>
+<ul>
+    <li>User authentication.</li>
+    <li>Query author data (pagination).</li>
+    <li>Query books data.</li>
+    <li>Reading list route authorization and CRUD operations.</li>
+</ul>
+<h2 id="built-with">Built With</h2>
+<ul>
+    <li><a href="https://nodejs.org/en/">NodeJS</a></li>
+    <li><a href="https://expressjs.com/">ExpressJS</a></li>
+    <li><p><a href="https://www.mongodb.com/cloud/atlas">MongoDB</a></p>
+    </li>
+    <li><h2 id="description">Description</h2>
+    </li>
+</ul>
+<p>The REST API to the example app is described below.</p>
+<h3 id="auth-routes">Auth routes</h3>
+<h3 id="user-login-request">User login request</h3>
+<p><code>POST /auth/signin</code></p>
+<p>body:</p>
+<pre><code>  {
+    <span class="hljs-attr">"email"</span> : <span class="hljs-string">"user1@mail.com"</span>,
+    <span class="hljs-attr">"password"</span>: <span class="hljs-string">"123456789"</span>
+}
+</code></pre><h3 id="response">Response</h3>
+<pre><code>HTTP/1.1 <span class="hljs-number">200</span> OK
+<span class="hljs-attribute">Date</span>: Sun, 13 Jun 2021 12:37:45 GMT
+<span class="hljs-attribute">Status</span>: 200 OK
+<span class="hljs-attribute">Connection</span>: keep-alive
+<span class="hljs-attribute">Keep-Alive</span>: timeout=5
+<span class="hljs-attribute">Content-Type</span>: application/json; charset=utf-8
+
+<span class="groovy">
+{
+    <span class="hljs-string">"message"</span>: <span class="hljs-string">"Authentication was successful!"</span>,
+    <span class="hljs-string">"token"</span>: <span class="hljs-string">"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im..."</span>,
+    <span class="hljs-string">"expiresIn"</span>: <span class="hljs-number">3600</span>,
+    <span class="hljs-string">"userId"</span>: <span class="hljs-string">"623472ab6..."</span>,
+    <span class="hljs-string">"email"</span>: <span class="hljs-string">"kristijan@mail.com"</span>
+}
+
+
+HTTP/<span class="hljs-number">1.1</span> <span class="hljs-number">401</span> Unathorized
+<span class="hljs-string">Date:</span> Sun, <span class="hljs-number">13</span> Jun <span class="hljs-number">2021</span> <span class="hljs-number">20</span>:<span class="hljs-number">06</span>:<span class="hljs-number">02</span> GMT
+<span class="hljs-string">Status:</span> <span class="hljs-number">401</span> Unathorized
+<span class="hljs-string">Connection:</span> keep-alive
+Content-<span class="hljs-string">Type:</span> application/json; charset=utf<span class="hljs-number">-8</span>
+
+
+{
+    <span class="hljs-string">"message"</span>: <span class="hljs-string">"Invalid authentication credentials!"</span>
+}</span>
+</code></pre><h3 id="user-signup-request">User signup request</h3>
+<p><code>POST /auth/signup</code></p>
+<p>body:</p>
+<pre><code>{
+    <span class="hljs-attr">"email"</span> : <span class="hljs-string">"kristijan@mail.com"</span>,
+    <span class="hljs-attr">"password"</span>: <span class="hljs-string">"15862333"</span>
+}
+</code></pre><h3 id="response">Response</h3>
+<pre><code>HTTP/1.1 <span class="hljs-number">201</span> Created
+<span class="hljs-attribute">Date</span>: Sun, 13 Jun 2021 12:37:45 GMT
+<span class="hljs-attribute">Status</span>: 201 Created
+<span class="hljs-attribute">Connection</span>: keep-alive
+<span class="hljs-attribute">Keep-Alive</span>: timeout=5
+<span class="hljs-attribute">Content-Type</span>: application/json; charset=utf-8
+
+<span class="json">
+{
+    <span class="hljs-attr">"message"</span>: <span class="hljs-string">"User created successfully!"</span>
+}</span>
+</code></pre><h3 id="update-user-s-books-list">Update user&#39;s books list</h3>
+<p><code>PUT /auth/:id</code></p>
+<p>body: </p>
+<pre><code>{
+    <span class="hljs-attr">"booksList"</span>: [
+    {
+        <span class="hljs-attr">"id"</span>: <span class="hljs-string">"611ba7f0f382460ea..."</span>
+    },
+    {
+        <span class="hljs-attr">"id"</span>: <span class="hljs-string">"611ba7f0f382460ea..."</span>,
+        <span class="hljs-attr">"status"</span>: <span class="hljs-string">"Reading"</span>
+    },
+    {
+        <span class="hljs-attr">"id"</span>: <span class="hljs-string">"611ba7f0f382460e..."</span>,
+        <span class="hljs-attr">"status"</span>: <span class="hljs-string">"Read"</span>
+    }]
+}
+</code></pre><h3 id="response">Response</h3>
+<pre><code>HTTP/1.1 <span class="hljs-number">201</span> Created
+<span class="hljs-attribute">Date</span>: Sun, 13 Jun 2021 12:37:45 GMT
+<span class="hljs-attribute">Status</span>: 201 Created
+<span class="hljs-attribute">Connection</span>: keep-alive
+<span class="hljs-attribute">Keep-Alive</span>: timeout=5
+<span class="hljs-attribute">Content-Type</span>: application/json; charset=utf-8
+
+<span class="json">{
+    <span class="hljs-attr">"message"</span>: <span class="hljs-string">"Successfully saved user books list to DB."</span>
+}</span>
+</code></pre><h3 id="get-user-s-books-list">Get user&#39;s books list</h3>
+<p><code>GET /auth/:id</code></p>
+<h3 id="response">Response</h3>
+<pre><code>HTTP/1.1 <span class="hljs-number">200</span> OK
+<span class="hljs-attribute">Date</span>: Sun, 13 Jun 2021 12:37:45 GMT
+<span class="hljs-attribute">Status</span>: 200 OK
+<span class="hljs-attribute">Connection</span>: keep-alive
+<span class="hljs-attribute">Keep-Alive</span>: timeout=5
+<span class="hljs-attribute">Content-Type</span>: application/json; charset=utf-8
+
+<span class="json">{
+    <span class="hljs-attr">"message"</span>: <span class="hljs-string">"Successfully retrieved user's books list."</span>,
+    <span class="hljs-attr">"booksList"</span>: [
+        {
+            <span class="hljs-attr">"_id"</span>: <span class="hljs-string">"6234e0746..."</span>,
+            <span class="hljs-attr">"book"</span>: {
+                <span class="hljs-attr">"_id"</span>: <span class="hljs-string">"611ba7f0f382..."</span>,
+                <span class="hljs-attr">"title"</span>: <span class="hljs-string">"Garrison Girl:  An Attack on Titan Novel"</span>,
+                <span class="hljs-attr">"year"</span>: <span class="hljs-string">"2017-12-31T23:00:00.000Z"</span>,
+                <span class="hljs-attr">"series"</span>: <span class="hljs-string">"Attack on Titan"</span>,
+                <span class="hljs-attr">"seriesIndex"</span>: <span class="hljs-number">6</span>,
+                <span class="hljs-attr">"authorName"</span>: <span class="hljs-string">"Rachel Aaron"</span>,
+                <span class="hljs-attr">"__v"</span>: <span class="hljs-number">0</span>
+            },
+            <span class="hljs-attr">"status"</span>: <span class="hljs-string">""</span>
+        },
+        {
+            <span class="hljs-attr">"_id"</span>: <span class="hljs-string">"6234e07466a083..."</span>,
+            <span class="hljs-attr">"book"</span>: {
+                <span class="hljs-attr">"_id"</span>: <span class="hljs-string">"611ba7f0f..."</span>,
+                <span class="hljs-attr">"title"</span>: <span class="hljs-string">"The Legend of Eli Monpress"</span>,
+                <span class="hljs-attr">"year"</span>: <span class="hljs-string">"2011-12-31T23:00:00.000Z"</span>,
+                <span class="hljs-attr">"series"</span>: <span class="hljs-string">"The Legend of Eli Monpress Omnibus"</span>,
+                <span class="hljs-attr">"seriesIndex"</span>: <span class="hljs-number">1</span>,
+                <span class="hljs-attr">"authorName"</span>: <span class="hljs-string">"Rachel Aaron"</span>,
+                <span class="hljs-attr">"__v"</span>: <span class="hljs-number">0</span>
+            },
+            <span class="hljs-attr">"status"</span>: <span class="hljs-string">"Reading"</span>
+        },
+        ...]
+}</span>
+</code></pre><h3 id="authors-routes">Authors routes</h3>
+<h3 id="get-all-authors-data">Get all authors data</h3>
+<p><code>GET /authors</code></p>
+<h3 id="response">Response</h3>
+<pre><code>HTTP/1.1 <span class="hljs-number">200</span> OK
+<span class="hljs-attribute">Date</span>: Sun, 13 Jun 2021 12:37:45 GMT
+<span class="hljs-attribute">Status</span>: 200 OK
+<span class="hljs-attribute">Connection</span>: keep-alive
+<span class="hljs-attribute">Keep-Alive</span>: timeout=5
+<span class="hljs-attribute">Content-Type</span>: application/json; charset=utf-8
+
+<span class="json">{
+    <span class="hljs-attr">"message"</span>: <span class="hljs-string">"Authors fetched successfully."</span>,
+    <span class="hljs-attr">"authors"</span>: [
+    {
+        <span class="hljs-attr">"id"</span>: <span class="hljs-string">"611ba7f0f38246..."</span>,
+        <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Rachel Aaron"</span>,
+        <span class="hljs-attr">"numOfBooks"</span>: <span class="hljs-number">7</span>
+    },
+    {
+        <span class="hljs-attr">"id"</span>: <span class="hljs-string">"611ba7f0f382460..."</span>,
+        <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Ben Aaronovitch"</span>,
+        <span class="hljs-attr">"numOfBooks"</span>: <span class="hljs-number">5</span>
+    }
+    ...]
+}</span>
+</code></pre><h3 id="get-one-authors-data">Get one authors data</h3>
+<p><code>GET /authors/:id</code></p>
+<h3 id="response">Response</h3>
+<pre><code>HTTP/1.1 <span class="hljs-number">200</span> OK
+<span class="hljs-attribute">Date</span>: Sun, 13 Jun 2021 12:37:45 GMT
+<span class="hljs-attribute">Status</span>: 200 OK
+<span class="hljs-attribute">Connection</span>: keep-alive
+<span class="hljs-attribute">Keep-Alive</span>: timeout=5
+<span class="hljs-attribute">Content-Type</span>: application/json; charset=utf-8
+
+<span class="json">{
+    <span class="hljs-attr">"message"</span>: <span class="hljs-string">"Author fetched successfully."</span>,
+    <span class="hljs-attr">"author"</span>: {
+        <span class="hljs-attr">"id"</span>: <span class="hljs-string">"611ba7f2f382460e..."</span>,
+        <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Jane Abbott"</span>,
+        <span class="hljs-attr">"books"</span>: [
+            {
+                <span class="hljs-attr">"_id"</span>: <span class="hljs-string">"611ba7f2f382460..."</span>,
+                <span class="hljs-attr">"title"</span>: <span class="hljs-string">"Watershed"</span>,
+                <span class="hljs-attr">"year"</span>: <span class="hljs-string">"2015-12-31T23:00:00.000Z"</span>,
+                <span class="hljs-attr">"authorName"</span>: <span class="hljs-string">"Jane Abbott"</span>,
+                <span class="hljs-attr">"__v"</span>: <span class="hljs-number">0</span>
+            }
+        ]
+    }
+}</span>
+</code></pre><h3 id="books-routes">Books routes</h3>
+<p><code>GET /books?searchBooksByTitleQuery=The+Legend || /books?searchBooksBySeriesQuery=Series+Name</code></p>
+<h3 id="response">Response</h3>
+<pre><code>HTTP/1.1 <span class="hljs-number">200</span> OK
+<span class="hljs-attribute">Date</span>: Sun, 13 Jun 2021 12:37:45 GMT
+<span class="hljs-attribute">Status</span>: 200 OK
+<span class="hljs-attribute">Connection</span>: keep-alive
+<span class="hljs-attribute">Keep-Alive</span>: timeout=5
+<span class="hljs-attribute">Content-Type</span>: application/json; charset=utf-8
+
+<span class="json">{
+    <span class="hljs-attr">"message"</span>: <span class="hljs-string">"Books fetched successfully."</span>,
+    <span class="hljs-attr">"books"</span>: [
+        {
+            <span class="hljs-attr">"_id"</span>: <span class="hljs-string">"611ba7f0f382460..."</span>,
+            <span class="hljs-attr">"title"</span>: <span class="hljs-string">"The Legend of Eli Monpress"</span>,
+            <span class="hljs-attr">"year"</span>: <span class="hljs-string">"2011-12-31T23:00:00.000Z"</span>,
+            <span class="hljs-attr">"series"</span>: <span class="hljs-string">"The Legend of Eli Monpress Omnibus"</span>,
+            <span class="hljs-attr">"seriesIndex"</span>: <span class="hljs-number">1</span>,
+            <span class="hljs-attr">"authorName"</span>: <span class="hljs-string">"Rachel Aaron"</span>,
+            <span class="hljs-attr">"__v"</span>: <span class="hljs-number">0</span>
+        }
+    ]
+}</span>
+</code></pre><h2 id="contact">Contact</h2>
+<p>Kristijan Pavlevski - kristijan.pavlevski@outlook.com</p>
+<p>Project Link: [<a href="https://github.com/kikooOOoo16/MyBooksAppAngularNode">https://github.com/kikooOOoo16/MyBooksAppAngularNode</a>]</p>

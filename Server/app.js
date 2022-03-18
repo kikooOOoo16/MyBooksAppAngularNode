@@ -1,5 +1,4 @@
 const express = require('express');
-const mongoose = require('mongoose');
 
 const bodyParser = require('body-parser');
 const seeder = require('./seeder');
@@ -7,26 +6,18 @@ const seeder = require('./seeder');
 const authorRoutes = require('./routes/authors');
 const booksRoutes = require('./routes/books');
 const authRoutes = require('./routes/auth');
+const indexRoutes = require('./routes/index');
+
 const app = express();
 
 //Environment variables config
 require('dotenv').config();
 
+// just run the file and connect to our DB
+require('./db/mongoose');
 
-// setup mongoose Atlas connection
-mongoose.connect(process.env.MLAB_DATABASE_URL,
-    {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-        useFindAndModify: false,
-        useCreateIndex: true
-    })
-    .then(() => {
-        console.log('Connected to DB!')
-    })
-    .catch(() => {
-        console.log('Connection failed.');
-    });
+// expose public folder
+app.use(express.static(__dirname + "/public"));
 
 // setup body parser
 app.use(bodyParser.json());
@@ -53,7 +44,7 @@ app.use((req, res, next) => {
 app.use('/authors', authorRoutes);
 app.use('/books', booksRoutes);
 app.use('/auth', authRoutes);
-
+app.use('', indexRoutes);
 
 
 module.exports = app;
